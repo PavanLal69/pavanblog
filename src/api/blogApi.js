@@ -1,95 +1,75 @@
-const API_URL = 'http://localhost:8001';
+import { db, storage } from '../firebase';
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 // Blogs
 export const fetchPosts = async () => {
-  const response = await fetch(`${API_URL}/posts`);
-  if (!response.ok) throw new Error('Failed to fetch posts');
-  return response.json();
+  const querySnapshot = await getDocs(collection(db, "posts"));
+  const posts = [];
+  querySnapshot.forEach((doc) => {
+    posts.push({ id: doc.id, ...doc.data() });
+  });
+  return posts;
 };
 
 export const createPost = async (postData) => {
-  const response = await fetch(`${API_URL}/posts`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(postData),
-  });
-  if (!response.ok) throw new Error('Failed to create post');
-  return response.json();
+  const docRef = await addDoc(collection(db, "posts"), postData);
+  return { id: docRef.id, ...postData };
 };
 
 export const updatePost = async (id, postData) => {
-  const response = await fetch(`${API_URL}/posts/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(postData),
-  });
-  if (!response.ok) throw new Error('Failed to update post');
-  return response.json();
+  const postRef = doc(db, "posts", id);
+  const { id: _, ...dataToUpdate } = postData;
+  await updateDoc(postRef, dataToUpdate);
+  return { id, ...dataToUpdate };
 };
 
 export const deletePost = async (id) => {
-  const response = await fetch(`${API_URL}/posts/${id}`, {
-    method: 'DELETE',
-  });
-  if (!response.ok) throw new Error('Failed to delete post');
-  return response.json();
+  await deleteDoc(doc(db, "posts", id));
+  return { success: true };
 };
 
 // Courses
 export const fetchCourses = async () => {
-  const response = await fetch(`${API_URL}/courses`);
-  if (!response.ok) throw new Error('Failed to fetch courses');
-  return response.json();
+  const querySnapshot = await getDocs(collection(db, "courses"));
+  const courses = [];
+  querySnapshot.forEach((doc) => {
+    courses.push({ id: doc.id, ...doc.data() });
+  });
+  return courses;
 };
 
 export const createCourse = async (courseData) => {
-  const response = await fetch(`${API_URL}/courses`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(courseData),
-  });
-  if (!response.ok) throw new Error('Failed to create course');
-  return response.json();
+  const docRef = await addDoc(collection(db, "courses"), courseData);
+  return { id: docRef.id, ...courseData };
 };
 
 export const updateCourse = async (id, courseData) => {
-  const response = await fetch(`${API_URL}/courses/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(courseData),
-  });
-  if (!response.ok) throw new Error('Failed to update course');
-  return response.json();
+  const courseRef = doc(db, "courses", id);
+  const { id: _, ...dataToUpdate } = courseData;
+  await updateDoc(courseRef, dataToUpdate);
+  return { id, ...dataToUpdate };
 };
 
 export const deleteCourse = async (id) => {
-  const response = await fetch(`${API_URL}/courses/${id}`, {
-    method: 'DELETE',
-  });
-  if (!response.ok) throw new Error('Failed to delete course');
-  return response.json();
+  await deleteDoc(doc(db, "courses", id));
+  return { success: true };
 };
 
 // File Upload
 export const uploadFile = async (file) => {
-  const formData = new FormData();
-  formData.append('file', file);
-
-  const response = await fetch(`${API_URL}/upload`, {
-    method: 'POST',
-    body: formData,
-  });
-  if (!response.ok) throw new Error('Failed to upload file');
-  return response.json();
+  if (!file) throw new Error("No file provided");
+  const uniqueName = `${Date.now()}-${file.name}`;
+  const storageRef = ref(storage, `modules/${uniqueName}`);
+  await uploadBytes(storageRef, file);
+  const url = await getDownloadURL(storageRef);
+  return { filename: file.name, url };
 };
 
 // Auth
 export const adminLogin = async (password) => {
-  const response = await fetch(`${API_URL}/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ password }),
-  });
-  if (!response.ok) throw new Error('Invalid password');
-  return response.json();
+  if (password === "admin123") {
+    return { status: "success", token: "mock-token", user: { role: "admin", username: "admin" } };
+  }
+  throw new Error('Invalid password');
 };

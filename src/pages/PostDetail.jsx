@@ -7,7 +7,7 @@ export default function PostDetail() {
   const navigate = useNavigate();
   const { posts, loading } = usePosts();
   
-  const post = posts.find(p => p.id === parseInt(id));
+  const post = posts.find(p => String(p.id) === String(id));
 
   if (loading) return <div className="container" style={{ padding: '4rem 2rem' }}>Loading post...</div>;
   if (!post) return <div className="container" style={{ padding: '4rem 2rem' }}>Post not found. <button onClick={() => navigate('/')}>Go back</button></div>;

@@ -7,7 +7,7 @@ export default function CourseDetail() {
   const navigate = useNavigate();
   const { courses, loading } = useCourses();
   
-  const course = courses.find(c => c.id === parseInt(id));
+  const course = courses.find(c => String(c.id) === String(id));
 
   if (loading) return <div className="container" style={{ padding: '4rem 2rem' }}>Loading course details...</div>;
   if (!course) return <div className="container" style={{ padding: '4rem 2rem' }}>Course not found. <button onClick={() => navigate('/courses')}>Back to Courses</button></div>;
