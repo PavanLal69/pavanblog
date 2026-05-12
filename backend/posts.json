@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "title": "New Interdisciplinary Research Center Opens Its Doors to Faculty and Students",
+        "description": "The new facility brings together experts from engineering, bio-sciences, and data analytics to tackle some of the world's most pressing challenges.",
+        "category": "My Posts",
+        "date": "May 8, 2026",
+        "image": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1200&h=800"
+    },
+    {
+        "id": 2,
+        "title": "Professor Smith Awarded Prestigious Grant for Sustainable Energy Project",
+        "description": "The multi-million dollar grant will fund research into next-generation solar cells with higher efficiency and lower manufacturing costs.",
+        "category": "Research",
+        "date": "May 6, 2026",
+        "image": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&h=600"
+    },
+    {
+        "id": 3,
+        "title": "Old Prompt Engineering vs. New Prompt Engineering: From Prompts to AI Workflows",
+        "description": "Old Prompt Engineering:\nDesigning the perfect prompt to get the best response from AI.\n\nNew Prompt Engineering:\nDesigning complete AI workflows where models, tools, memory, retrieval, and automation work together to solve real-world problems.\n\nThe industry is shifting from:\n\ud83d\udcdd \u201cWrite a better prompt\u201d\nto\n\u2699\ufe0f \u201cBuild a smarter AI system.\u201d\n\nYesterday\u2019s skill was asking AI the right question.\nToday\u2019s skill is architecting how AI thinks, acts, verifies, and collaborates across an entire workflow.\n\nThe future belongs to people who can combine:\n\nAI Agents\nRAG Systems\nAutomation\nTool Calling\nMulti-step Reasoning\nHuman + AI Collaboration\n\nPrompt Engineering is no longer just about prompts.\nIt\u2019s becoming AI Workflow Engineering. \ud83d\ude80",
+        "category": "My Posts",
+        "date": "May 12, 2026",
+        "image": "/modules/Screenshot 2026-05-12 144725.png"
+    }
+]

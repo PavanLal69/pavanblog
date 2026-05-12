@@ -1,0 +1,89 @@
+.footer {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+  padding-top: var(--spacing-xl);
+}
+
+.footerContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+@media (min-width: 992px) {
+  .footerContainer {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.brand {
+  max-width: 300px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  margin-bottom: var(--spacing-md);
+}
+
+.logoEducator {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-bg);
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.logoBlog {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--color-bg);
+  font-size: 2rem;
+}
+
+.tagline {
+  color: #aeb6bf;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.linksContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.linkGroup h4 {
+  color: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  margin-bottom: var(--spacing-md);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.linkGroup ul li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.linkGroup ul li a {
+  color: #aeb6bf;
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.linkGroup ul li a:hover {
+  color: var(--color-bg);
+  text-decoration: none;
+}
+
+.bottomBar {
+  background-color: #001933; /* Darker academic blue */
+  padding: var(--spacing-md) 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #aeb6bf;
+}

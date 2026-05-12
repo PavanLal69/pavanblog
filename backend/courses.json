@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Prompt Engineering",
+        "description": "Learn the art of crafting effective prompts for Large Language Models (LLMs) to achieve superior results in various tasks.",
+        "level": "Intermediate",
+        "duration": "8 Weeks",
+        "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&h=600",
+        "modules": [
+            {
+                "id": 1,
+                "title": "Module 1: Introduction to LLMs",
+                "file": "Module 1.pptx"
+            },
+            {
+                "id": 2,
+                "title": "Module 2: Basics of Prompting",
+                "file": "Module 2.pptx"
+            }
+        ],
+        "assignments": [
+            {
+                "id": 1,
+                "title": "Assignment 1: Zero-Shot vs Few-Shot Analysis",
+                "description": "Compare performance...",
+                "dueDate": "Week 2"
+            }
+        ]
+    }
+]
